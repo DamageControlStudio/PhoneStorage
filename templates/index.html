@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Phone Storage</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./static/favicon.ico">
+    <link rel="stylesheet" href="./static/main.css">
+    <link rel="stylesheet" href="./static/dropzone.min.css">
+</head>
+
+<body>
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <td colspan="4">
+            <form action="/upload" class="dropzone" method="POST" enctype="multipart/form-data">
+            </form>
+            <script src="./static/dropzone.min.js"></script>
+        </td>
+    </tr>
+    </thead>
+
+    <tr>
+        <td></td>
+        <td>Filename</td>
+        <td colspan="2">Action</td>
+    </tr>
+    {% for filename in file_list %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ filename }}</td>
+            <td>
+                <button type="button" onclick="window.location.href='./download/{{ filename }}';">Download</button>
+            </td>
+            <td>
+                <button type="button" onclick="window.location.href='./delete/{{ filename }}';">Delete</button>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+</body>
+</html>
